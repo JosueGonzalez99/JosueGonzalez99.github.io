@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Métodos de Transporte | QuetzalPack</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <img src="assets/logo.jpg" alt="Logo QuetzalPack">
+      Quetzal<span class="pack">Pack</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#inicio">Inicio</a></li>
+      <li><a href="index.html#empresa">Empresa</a></li>
+      <li><a href="index.html#producto">Producto</a></li>
+      <li><a href="index.html#red">Distribución</a></li>
+      <li><a href="transporte.html" class="active">Transporte</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="transporte-hero">
+  <div class="wrap">
+    <span class="eyebrow-tag">Problema de transporte</span>
+    <h1>Tres métodos, paso a paso</h1>
+    <p class="lede">Misma red de fábricas y distribuidores, tres estrategias distintas para asignar los envíos. Usa los botones de cada pestaña para avanzar celda por celda tal como se resolvió a mano.</p>
+  </div>
+</header>
+
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="tabs" id="methodTabs"></div>
+    <div id="methodPanels"></div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Comparación</div>
+      <h2>¿Qué método da el menor costo total?</h2>
+      <p>Los tres métodos parten de la misma matriz de costos y llegan a una solución factible, pero con distinto costo total de transporte.</p>
+    </div>
+    <div class="compare-grid" id="compareGrid"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 <strong>QuetzalPack, S.A.</strong></span>
+    <span>Proyecto académico de Ingeniería en Sistemas</span>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
