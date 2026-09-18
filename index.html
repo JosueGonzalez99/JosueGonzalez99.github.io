@@ -1,751 +1,188 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>QuetzalPack | Mochilas para Laptop</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f4f7f9;
-            color: #1f2937;
-            line-height: 1.6;
-        }
-
-        /* NAVBAR */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(15, 23, 42, 0.97);
-            padding: 16px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .logo {
-            color: white;
-            font-size: 25px;
-            font-weight: bold;
-        }
-
-        .logo span {
-            color: #38bdf8;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 15px;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: #38bdf8;
-        }
-
-        /* HERO */
-        .hero {
-            min-height: 100vh;
-            padding: 140px 8% 80px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 50px;
-            background: linear-gradient(135deg, #0f172a, #164e63);
-            color: white;
-        }
-
-        .hero-text {
-            max-width: 650px;
-        }
-
-        .hero-text h1 {
-            font-size: 58px;
-            margin-bottom: 15px;
-        }
-
-        .hero-text h1 span {
-            color: #38bdf8;
-        }
-
-        .hero-text p {
-            font-size: 20px;
-            color: #dbeafe;
-            margin-bottom: 30px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 13px 25px;
-            background: #38bdf8;
-            color: #082f49;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            background: #7dd3fc;
-        }
-
-        .hero-card {
-            width: 330px;
-            height: 330px;
-            border-radius: 25px;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 30px;
-            backdrop-filter: blur(10px);
-        }
-
-        .hero-card div {
-            font-size: 90px;
-        }
-
-        /* GENERAL */
-        section {
-            padding: 90px 8%;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title h2 {
-            font-size: 38px;
-            color: #0f172a;
-            margin-bottom: 10px;
-        }
-
-        .section-title p {
-            color: #64748b;
-        }
-
-        /* EMPRESA */
-        .empresa {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card h3 {
-            color: #0369a1;
-            margin-bottom: 12px;
-            font-size: 22px;
-        }
-
-        /* PRODUCTO */
-        .producto {
-            background: #e0f2fe;
-        }
-
-        .producto-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .producto-info h3 {
-            font-size: 30px;
-            color: #0c4a6e;
-            margin-bottom: 15px;
-        }
-
-        .caracteristicas {
-            margin-top: 25px;
-        }
-
-        .caracteristicas p {
-            margin-bottom: 10px;
-            background: white;
-            padding: 10px 15px;
-            border-radius: 7px;
-        }
-
-        .producto-visual {
-            min-height: 350px;
-            background: #0f172a;
-            color: white;
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .producto-visual .icon {
-            font-size: 120px;
-            margin-bottom: 20px;
-        }
-
-        .producto-visual h3 {
-            font-size: 27px;
-        }
-
-        /* RED */
-        .red {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        .lista {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
-        }
-
-        .lista h3 {
-            color: #0369a1;
-            margin-bottom: 20px;
-        }
-
-        .lista div {
-            padding: 12px;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        /* TRANSPORTE */
-        .transporte {
-            background: #0f172a;
-            color: white;
-        }
-
-        .transporte .section-title h2 {
-            color: white;
-        }
-
-        .transporte .section-title p {
-            color: #cbd5e1;
-        }
-
-        .tabla-container {
-            overflow-x: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 850px;
-            color: #1f2937;
-        }
-
-        th {
-            background: #0369a1;
-            color: white;
-            padding: 12px;
-        }
-
-        td {
-            padding: 11px;
-            text-align: center;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        tr:hover td {
-            background: #f0f9ff;
-        }
-
-        .metodos {
-            margin-top: 35px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .metodo {
-            background: #1e293b;
-            padding: 25px;
-            border-radius: 12px;
-            border: 1px solid #334155;
-        }
-
-        .metodo h3 {
-            color: #38bdf8;
-            margin-bottom: 10px;
-        }
-
-        /* FOOTER */
-        footer {
-            background: #020617;
-            color: #cbd5e1;
-            text-align: center;
-            padding: 30px;
-        }
-
-        footer strong {
-            color: #38bdf8;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 900px) {
-
-            nav {
-                padding: 15px 5%;
-            }
-
-            nav ul {
-                gap: 12px;
-            }
-
-            nav a {
-                font-size: 13px;
-            }
-
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                padding-top: 130px;
-            }
-
-            .hero-text h1 {
-                font-size: 43px;
-            }
-
-            .hero-card {
-                width: 260px;
-                height: 260px;
-            }
-
-            .empresa,
-            .producto-content,
-            .red,
-            .metodos {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 600px) {
-
-            nav {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            section {
-                padding: 70px 5%;
-            }
-
-            .hero-text h1 {
-                font-size: 36px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuetzalPack | Mochilas para Laptop</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <!-- NAVBAR -->
-    <nav>
-        <div class="logo">Quetzal<span>Pack</span></div>
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="#inicio" class="brand">
+      <img src="assets/logo.jpg" alt="Logo QuetzalPack">
+      Quetzal<span class="pack">Pack</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#empresa">Empresa</a></li>
+      <li><a href="#producto">Producto</a></li>
+      <li><a href="#red">Distribución</a></li>
+      <li><a href="transporte.html">Transporte</a></li>
+    </ul>
+  </div>
+</nav>
 
-        <ul>
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#empresa">Empresa</a></li>
-            <li><a href="#producto">Producto</a></li>
-            <li><a href="#red">Distribución</a></li>
-            <li><a href="#transporte">Transporte</a></li>
+<header class="hero" id="inicio">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow-tag">Guatemala · Ingeniería en Sistemas</span>
+      <h1>Soluciones de transporte y distribución de mochilas para laptop.</h1>
+      <p class="lede">Fabricamos y distribuimos mochilas resistentes para equipo electrónico a través de una red de fábricas y centros distribuidores en todo el país.</p>
+      <a href="#producto" class="btn">Conocer producto</a>
+      <a href="transporte.html" class="btn ghost" style="margin-left:12px;">Ver métodos de transporte</a>
+    </div>
+    <div class="hero-visual">
+      <img src="assets/logo.jpg" alt="Mochila QuetzalPack">
+      <p class="cap">QuetzalPack</p>
+      <p class="sub">Laptop 15.6"</p>
+    </div>
+  </div>
+</header>
+
+<section id="empresa" class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Nuestra empresa</div>
+      <h2>Una empresa guatemalteca enfocada en proteger tu equipo.</h2>
+      <p>Diseñamos y fabricamos mochilas funcionales para estudiantes y profesionales, con una red de distribución pensada para llegar a todo el territorio nacional.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <h3>Misión</h3>
+        <p>Diseñar y comercializar mochilas funcionales y resistentes que faciliten el transporte seguro de laptops y accesorios, con soluciones accesibles para estudiantes y profesionales.</p>
+      </div>
+      <div class="card">
+        <h3>Visión</h3>
+        <p>Convertirnos en una empresa reconocida en Guatemala por la calidad de nuestros productos y por una red eficiente de distribución a nivel nacional.</p>
+      </div>
+      <div class="card">
+        <h3>Valores</h3>
+        <p>Responsabilidad, calidad, innovación, eficiencia, servicio al cliente y compromiso.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="producto">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Nuestro producto</div>
+      <h2>Mochila QuetzalPack Laptop 15.6"</h2>
+    </div>
+    <div class="product-layout">
+      <div class="product-visual">
+        <div class="emoji">🎒</div>
+        <p class="cap" style="font-family:'Sora',sans-serif;font-weight:700;color:var(--teal-dark);margin-top:12px;">QuetzalPack</p>
+        <p class="sub" style="color:var(--slate);margin:0;">Laptop 15.6"</p>
+      </div>
+      <div>
+        <p>Mochila fabricada con poliéster reforzado, diseñada para transportar laptops de hasta 15.6 pulgadas y diferentes accesorios tecnológicos.</p>
+        <ul class="spec-list">
+          <li><span class="k">Dimensiones</span><span class="v">45 × 32 × 15 cm</span></li>
+          <li><span class="k">Peso</span><span class="v">1.2 kg</span></li>
+          <li><span class="k">Capacidad</span><span class="v">25 litros</span></li>
+          <li><span class="k">Tamaño de laptop</span><span class="v">Hasta 15.6"</span></li>
+          <li><span class="k">Material</span><span class="v">Poliéster reforzado</span></li>
         </ul>
-    </nav>
-
-
-    <!-- INICIO -->
-    <section class="hero" id="inicio">
-
-        <div class="hero-text">
-
-            <h1>
-                <span>QuetzalPack</span>
-            </h1>
-
-            <p>
-                Soluciones de transporte y distribución de mochilas
-                para laptops dentro de Guatemala.
-            </p>
-
-            <a href="#producto" class="btn">
-                Conocer producto
-            </a>
-
-        </div>
-
-        <div class="hero-card">
-
-            <div>
-                🎒
-                <h2>QuetzalPack</h2>
-                <p>Laptop 15.6"</p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- EMPRESA -->
-    <section id="empresa">
-
-        <div class="section-title">
-
-            <h2>Nuestra Empresa</h2>
-
-            <p>
-                Una empresa guatemalteca enfocada en la fabricación
-                y distribución de mochilas para dispositivos electrónicos.
-            </p>
-
-        </div>
-
-        <div class="empresa">
-
-            <div class="card">
-
-                <h3>Misión</h3>
-
-                <p>
-                    Diseñar y comercializar mochilas funcionales y resistentes
-                    que faciliten el transporte seguro de laptops y accesorios,
-                    brindando soluciones accesibles para estudiantes y profesionales.
-                </p>
-
-            </div>
-
-            <div class="card">
-
-                <h3>Visión</h3>
-
-                <p>
-                    Convertirnos en una empresa reconocida en Guatemala
-                    por la calidad de nuestros productos y por una red
-                    eficiente de distribución a nivel nacional.
-                </p>
-
-            </div>
-
-            <div class="card">
-
-                <h3>Valores</h3>
-
-                <p>
-                    Responsabilidad, calidad, innovación, eficiencia,
-                    servicio al cliente y compromiso.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- PRODUCTO -->
-    <section class="producto" id="producto">
-
-        <div class="section-title">
-
-            <h2>Nuestro Producto</h2>
-
-            <p>
-                QuetzalPack Laptop 15.6"
-            </p>
-
-        </div>
-
-        <div class="producto-content">
-
-            <div class="producto-info">
-
-                <h3>Mochila QuetzalPack Laptop 15.6"</h3>
-
-                <p>
-                    Mochila fabricada con poliéster reforzado,
-                    diseñada para transportar laptops de hasta 15.6 pulgadas
-                    y diferentes accesorios tecnológicos.
-                </p>
-
-                <div class="caracteristicas">
-
-                    <p><strong>Dimensiones:</strong> 45 × 32 × 15 cm</p>
-
-                    <p><strong>Peso:</strong> 1.2 kg</p>
-
-                    <p><strong>Capacidad:</strong> 25 litros</p>
-
-                    <p><strong>Tamaño de laptop:</strong> Hasta 15.6"</p>
-
-                    <p><strong>Material:</strong> Poliéster reforzado</p>
-
-                </div>
-
-            </div>
-
-            <div class="producto-visual">
-
-                <div class="icon">🎒</div>
-
-                <h3>QuetzalPack</h3>
-
-                <p>Laptop 15.6"</p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- RED DE DISTRIBUCIÓN -->
-    <section id="red">
-
-        <div class="section-title">
-
-            <h2>Red de Distribución</h2>
-
-            <p>
-                Nuestra operación contempla cinco fábricas
-                y seis centros distribuidores dentro de Guatemala.
-            </p>
-
-        </div>
-
-        <div class="red">
-
-            <div class="lista">
-
-                <h3>🏭 Fábricas</h3>
-
-                <div><strong>F1</strong> — Guatemala, Guatemala — 650 unidades</div>
-
-                <div><strong>F2</strong> — Escuintla, Escuintla — 500 unidades</div>
-
-                <div><strong>F3</strong> — Chimaltenango, Chimaltenango — 700 unidades</div>
-
-                <div><strong>F4</strong> — Quetzaltenango, Quetzaltenango — 550 unidades</div>
-
-                <div><strong>F5</strong> — Cobán, Alta Verapaz — 600 unidades</div>
-
-            </div>
-
-
-            <div class="lista">
-
-                <h3>📍 Distribuidores</h3>
-
-                <div><strong>D1</strong> — Antigua Guatemala — 400 unidades</div>
-
-                <div><strong>D2</strong> — Puerto Barrios — 550 unidades</div>
-
-                <div><strong>D3</strong> — Huehuetenango — 450 unidades</div>
-
-                <div><strong>D4</strong> — Mazatenango — 500 unidades</div>
-
-                <div><strong>D5</strong> — Jutiapa — 600 unidades</div>
-
-                <div><strong>D6</strong> — Flores, Petén — 500 unidades</div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- TRANSPORTE -->
-    <section class="transporte" id="transporte">
-
-        <div class="section-title">
-
-            <h2>Problema de Transporte</h2>
-
-            <p>
-                Matriz de costos unitarios para transportar
-                las mochilas desde las fábricas hasta los distribuidores.
-            </p>
-
-        </div>
-
-
-        <div class="tabla-container">
-
-            <table>
-
-                <thead>
-
-                    <tr>
-
-                        <th>Fábrica</th>
-                        <th>Antigua</th>
-                        <th>Puerto Barrios</th>
-                        <th>Huehuetenango</th>
-                        <th>Mazatenango</th>
-                        <th>Jutiapa</th>
-                        <th>Flores</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-                        <th>Guatemala</th>
-                        <td>Q44</td>
-                        <td>Q54</td>
-                        <td>Q54</td>
-                        <td>Q49</td>
-                        <td>Q49</td>
-                        <td>Q62</td>
-                    </tr>
-
-                    <tr>
-                        <th>Escuintla</th>
-                        <td>Q49</td>
-                        <td>Q54</td>
-                        <td>Q54</td>
-                        <td>Q54</td>
-                        <td>Q49</td>
-                        <td>Q62</td>
-                    </tr>
-
-                    <tr>
-                        <th>Chimaltenango</th>
-                        <td>Q44</td>
-                        <td>Q54</td>
-                        <td>Q54</td>
-                        <td>Q54</td>
-                        <td>Q49</td>
-                        <td>Q62</td>
-                    </tr>
-
-                    <tr>
-                        <th>Quetzaltenango</th>
-                        <td>Q54</td>
-                        <td>Q62</td>
-                        <td>Q44</td>
-                        <td>Q49</td>
-                        <td>Q54</td>
-                        <td>Q62</td>
-                    </tr>
-
-                    <tr>
-                        <th>Cobán</th>
-                        <td>Q54</td>
-                        <td>Q49</td>
-                        <td>Q62</td>
-                        <td>Q62</td>
-                        <td>Q54</td>
-                        <td>Q54</td>
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-
-        <div class="metodos">
-
-            <div class="metodo">
-
-                <h3>01. Esquina Noroeste</h3>
-
-                <p>
-                    Método utilizado para obtener una solución inicial
-                    al problema de transporte.
-                </p>
-
-            </div>
-
-
-            <div class="metodo">
-
-                <h3>02. Costo Mínimo</h3>
-
-                <p>
-                    Asignación de unidades tomando como referencia
-                    los costos unitarios más bajos.
-                </p>
-
-            </div>
-
-
-            <div class="metodo">
-
-                <h3>03. Vogel</h3>
-
-                <p>
-                    Método de aproximación que utiliza penalizaciones
-                    para determinar las asignaciones.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- FOOTER -->
-    <footer>
-
-        <p>
-            © 2026 <strong>QuetzalPack, S.A.</strong>
-        </p>
-
-        <p>
-            Proyecto académico de Ingeniería en Sistemas
-        </p>
-
-    </footer>
-
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="red" class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Red de distribución</div>
+      <h2>Cinco fábricas y seis centros distribuidores en Guatemala.</h2>
+    </div>
+    <div class="net-cols">
+      <div>
+        <div class="net-title">🏭 Fábricas</div>
+        <ul class="net-list">
+          <li><span><span class="tag">F1</span> — Guatemala, Guatemala</span><span class="amt">650 unidades</span></li>
+          <li><span><span class="tag">F2</span> — Escuintla, Escuintla</span><span class="amt">500 unidades</span></li>
+          <li><span><span class="tag">F3</span> — Chimaltenango, Chimaltenango</span><span class="amt">700 unidades</span></li>
+          <li><span><span class="tag">F4</span> — Quetzaltenango, Quetzaltenango</span><span class="amt">550 unidades</span></li>
+          <li><span><span class="tag">F5</span> — Cobán, Alta Verapaz</span><span class="amt">600 unidades</span></li>
+        </ul>
+      </div>
+      <div>
+        <div class="net-title">📍 Distribuidores</div>
+        <ul class="net-list">
+          <li><span><span class="tag">D1</span> — Antigua Guatemala</span><span class="amt">400 unidades</span></li>
+          <li><span><span class="tag">D2</span> — Puerto Barrios</span><span class="amt">550 unidades</span></li>
+          <li><span><span class="tag">D3</span> — Huehuetenango</span><span class="amt">450 unidades</span></li>
+          <li><span><span class="tag">D4</span> — Mazatenango</span><span class="amt">500 unidades</span></li>
+          <li><span><span class="tag">D5</span> — Jutiapa</span><span class="amt">600 unidades</span></li>
+          <li><span><span class="tag">D6</span> — Flores, Petén</span><span class="amt">500 unidades</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="problema">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Problema de transporte</div>
+      <h2>Matriz de costos unitarios</h2>
+      <p>Costo de transportar una mochila desde cada fábrica hasta cada centro distribuidor.</p>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Fábrica</th><th>Antigua</th><th>Puerto Barrios</th><th>Huehuetenango</th><th>Mazatenango</th><th>Jutiapa</th><th>Flores</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>Guatemala</th><td>Q44</td><td>Q54</td><td>Q54</td><td>Q49</td><td>Q49</td><td>Q62</td></tr>
+          <tr><th>Escuintla</th><td>Q49</td><td>Q54</td><td>Q54</td><td>Q54</td><td>Q49</td><td>Q62</td></tr>
+          <tr><th>Chimaltenango</th><td>Q44</td><td>Q54</td><td>Q54</td><td>Q54</td><td>Q49</td><td>Q62</td></tr>
+          <tr><th>Quetzaltenango</th><td>Q54</td><td>Q62</td><td>Q44</td><td>Q49</td><td>Q54</td><td>Q62</td></tr>
+          <tr><th>Cobán</th><td>Q54</td><td>Q49</td><td>Q62</td><td>Q62</td><td>Q54</td><td>Q54</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="transporte" class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Métodos de solución</div>
+      <h2>Tres formas de resolver el problema de transporte</h2>
+      <p>Comparamos tres métodos clásicos de programación lineal para encontrar una asignación de envíos que minimice el costo total.</p>
+    </div>
+    <div class="method-teaser">
+      <div class="card">
+        <div class="num">01</div>
+        <h3>Esquina Noroeste</h3>
+        <p>Solución inicial simple, asignando desde la esquina superior izquierda de la matriz.</p>
+      </div>
+      <div class="card">
+        <div class="num">02</div>
+        <h3>Costo Mínimo</h3>
+        <p>Asigna primero las rutas con el costo unitario más bajo disponible.</p>
+      </div>
+      <div class="card">
+        <div class="num">03</div>
+        <h3>Vogel</h3>
+        <p>Usa penalizaciones por fila y columna para acercarse más al óptimo.</p>
+      </div>
+    </div>
+    <p style="margin-top:28px;"><a href="transporte.html" class="btn">Ver el desarrollo paso a paso →</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 <strong>QuetzalPack, S.A.</strong></span>
+    <span>Proyecto académico de Ingeniería en Sistemas</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
